@@ -10,7 +10,7 @@ d = b**2 - 4 * a * c
 if d < 0
   puts "d = #{d} корней нет"
 else
-	d_sqrt = Math.sqrt(d)
+  d_sqrt = Math.sqrt(d)
   x1 = (-b + d_sqrt) / (2.0 * a)
   x2 = (-b - d_sqrt) / (2.0 * a)
   if x1 != x2

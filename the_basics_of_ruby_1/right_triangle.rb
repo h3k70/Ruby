@@ -13,14 +13,12 @@ equilateral_triangle = cathetus_a == hypotenuse # равносторонний
 
 if equilateral_triangle 
   puts "Треугольник равносторонний"
-
+elsif rigth_triangle && isosceles_triangle
+  puts "Треугольник прямоугольный и равнобедренный" 
+elsif rigth_triangle 
+  print "Треугольник прямоугольный"
+elsif not isosceles_triangle
+  puts "Треугольник не прямоугольный"
 else
-
-  if rigth_triangle
-    print "Треугольник прямоугольный"
-    puts " и равнобедренный" if isosceles_triangle
-  else
-    print "Треугольник не прямоугольный"
-    puts ", но равнобедренный" if isosceles_triangle
-  end
+  puts "Треугольник не прямоугольный, но равнобедренный"
 end
