@@ -36,9 +36,9 @@ class Train
 
   def move_forward
     if next_station
-      @route.stations[@current_station].go_train(self)
+      current_station.send_train(self)
       @current_station += 1
-      @route.stations[@current_station].add_train(self)
+      current_station.add_train(self)
     end
   end
 
@@ -48,9 +48,9 @@ class Train
 
   def move_backward
     if previous_station
-      @route.stations[@current_station].go_train(self)
+      current_station.send_train(self)
       @current_station -= 1
-      @route.stations[@current_station].add_train(self)
+      current_station.add_train(self)
     end
   end
 
