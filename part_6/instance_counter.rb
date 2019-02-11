@@ -6,10 +6,10 @@ module InstanceCounter
   
   module InstanceMethods
 
-    #def initialize
-     # super
-      #self.send :register_instance
-    #end
+    def initialize
+      super
+      self.class.send :register_instance
+    end
 
     protected
     def register_instance
