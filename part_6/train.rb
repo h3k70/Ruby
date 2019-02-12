@@ -22,7 +22,7 @@ class Train
     @type = type
     @wagons = []
     @@all_trains[number] = self
-    register_instance
+    #register_instance
   end
 
   def raise_speed(change_speed)

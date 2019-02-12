@@ -1,25 +1,25 @@
 module InstanceCounter
 
   module ClassMethods
-    attr_accessor :instance
+    attr_accessor :instances
   end
   
   module InstanceMethods
 
-    def initialize
+    def initialize(*args)
       super
-      self.class.send :register_instance
+      register_instance
     end
 
     protected
     def register_instance
-      self.class.instance ||= 0
-      self.class.instance += 1
+      self.class.instances ||= 0
+      self.class.instances += 1
     end
   end
   
   def self.included(receiver)
     receiver.extend         ClassMethods
-    receiver.send :include, InstanceMethods
+    receiver.send :prepend, InstanceMethods
   end
 end
