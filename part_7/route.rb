@@ -42,8 +42,9 @@ class Route
   end
 
   private
-    def validate!
-      raise NOT_VALID_OBJECT unless @stations.first.is_a?(Station) || @stations.last.is_a?(Station)
-      raise STATIONS_ERROR if @stations.first == stations.last
-    end
+
+  def validate!
+    raise NOT_VALID_OBJECT unless @stations.all? { |station| station.is_a?(Station) }
+    raise STATIONS_ERROR if @stations.first == stations.last
+  end
 end
