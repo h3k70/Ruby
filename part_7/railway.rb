@@ -23,7 +23,7 @@ class Railway
   ]
 
   NOT_VALID_NUM = "Недопустимый номер"
-  CREATED_TRAIN = "Создан поезд"
+  CREATED_TRAIN = "Создан поезд: "
   NOT_VALID_CHOCIE = "Недопустимый выбор"
 
   def initialize
@@ -47,7 +47,7 @@ class Railway
     puts SELECT_TYPE
     train_type = select_from_array([CargoTrain, PassengerTrain])
     @trains << train_type.new(number)
-    puts CREATED_TRAIN
+    puts CREATED_TRAIN + @trains.last.to_s
     rescue 
     puts NOT_VALID_NUM
     retry
