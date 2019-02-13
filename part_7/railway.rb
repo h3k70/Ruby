@@ -48,8 +48,8 @@ class Railway
     train_type = select_from_array([CargoTrain, PassengerTrain])
     @trains << train_type.new(number)
     puts CREATED_TRAIN + @trains.last.to_s
-    rescue 
-    puts NOT_VALID_NUM
+  rescue StandardError => e
+    puts e.message
     retry
   end
 
@@ -223,11 +223,8 @@ private
 
   def select_from_array(array)
     user_input = gets.to_i
-    raise unless  user_input.between?(1, array.size)
+    user_input = gets.to_i until user_input.between?(1, array.size)
     array[user_input - 1]
-    rescue
-    puts NOT_VALID_CHOCIE
-    retry
     
   end
 end

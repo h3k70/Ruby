@@ -8,8 +8,8 @@ class Train
 
   @@all_trains = {}
 
-  NOT_VALID_NUM = "Недопустимый номер"
-  NUM_FORMAT = /^[a-zа-я\d]{3}(-(\d{2}|[a-zа-я]{2}))?$/i
+  NOT_VALID_NUM = "Недопустимый номер поезда"
+  NUM_FORMAT = /^[a-zа-яё\d]{3}-?[a-zа-яё\d]{2}$/i
 
   def self.find(number)
     @@all_trains[number]
@@ -20,11 +20,11 @@ class Train
 
   def initialize(number, type)
     @number = number.to_s
-    @speed = 0
     @type = type
+    validate!
+    @speed = 0
     @wagons = []
     @@all_trains[number] = self
-    valid!
     #register_instance
   end
 
@@ -83,15 +83,15 @@ class Train
   end
 
   def valid?
-    valid!
+    validate!
     return true
-    rescue
+  rescue
     return false
   end
 
   protected
 
-  def valid!
+  def validate!
     raise NOT_VALID_NUM if @number.nil? || @number !~ NUM_FORMAT
   end
 end

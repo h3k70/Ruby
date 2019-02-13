@@ -18,9 +18,10 @@ class Station
 
   def initialize(name)
     @name = name
+    validate!
     @trains = []
     @@all_stations << self
-    valid!
+    
     #register_instance
   end
 
@@ -37,15 +38,15 @@ class Station
   end
 
   def valid?
-    valid!
+    validate!
     return true
-    rescue
+  rescue
     return false
   end
 
   protected
 
-  def valid!
+  def validate!
     raise NOT_VALID_NAME if @name.nil? || @name !~ NAME_FORMAT
   end
 end
