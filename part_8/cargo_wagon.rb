@@ -8,7 +8,7 @@ class CargoWagon < Wagon
   end
 
   def take_volume(take_volume)
-    if take_volume < free_volume
+    if take_volume <= free_volume
       @free_volume -= take_volume
       @occupied_volume += take_volume
     end

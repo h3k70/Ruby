@@ -20,6 +20,7 @@ class Railway
   SET_STATION_NAME = "Введите название станции"
   SET_FREE_VOLUME = "Введите кол-во свободного объема"
   SET_FREE_SEATS = "Введите кол-во свободных мест"
+  SET_OCCUPIED_VOLUME = "Сколько места занять?"
   SET_STATION_NUMBER = [
     "Введите порядковый номер начальной станции из списка",
     "Введите порядковый номер конечной станции из списка"
@@ -233,6 +234,21 @@ class Railway
       puts TRAIN_EMPTY
     else
       train.each_wagons { |wagon| puts wagon.to_s }
+    end
+  end
+
+  def wagon_stuff
+    return puts(NOT_ENOUGH_WAGONS) if @wagons.empty?
+    puts SELECT_WAGON
+    show_array(@wagons, :to_s)
+    wagon = select_from_array(@wagons)
+
+    if wagon.class == PassengerWagon
+      wagon.take_seats
+    else
+      puts SET_OCCUPIED_VOLUME
+      volume = gets.to_f
+      wagon.take_volume(volume)
     end
   end
 

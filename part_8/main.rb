@@ -24,7 +24,8 @@ class Main
     "Переместить поезд по маршруту назад",
     "Вывести список станций",
     "Вывести список поездов на станции",
-    "Вывести список вагонов поезда"
+    "Вывести список вагонов поезда",
+    "Заполнить вагон",
   ]
 
   def run(railway)
@@ -34,7 +35,7 @@ class Main
       end
 
       puts
-      puts "Введите цифру действия от 1 до 13"
+      puts "Введите цифру действия от 1 до 15"
       puts "(0 - Выход)"
 
       user_choice = gets.to_i
@@ -54,6 +55,7 @@ class Main
       when 12 then railway.stations_list
       when 13 then railway.trains_list
       when 14 then railway.wagon_list
+      when 15 then railway.wagon_stuff
       end
 
       break if user_choice == 0
