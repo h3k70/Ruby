@@ -244,7 +244,7 @@ class Railway
     wagon = select_from_array(@wagons)
 
     if wagon.class == PassengerWagon
-      wagon.take_seats
+      wagon.take_volume(1)
     else
       puts SET_OCCUPIED_VOLUME
       volume = gets.to_f

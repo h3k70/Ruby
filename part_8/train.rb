@@ -82,7 +82,7 @@ class Train
     self.wagons.size > 0
   end
 
-  def each_wagons(&block)
+  def each_wagons
     @wagons.each { |wagon| yield(wagon) }
   end 
 
