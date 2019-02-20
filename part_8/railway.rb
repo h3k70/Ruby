@@ -243,13 +243,16 @@ class Railway
     show_array(@wagons, :to_s)
     wagon = select_from_array(@wagons)
 
-    if wagon.class == PassengerWagon
-      wagon.take_volume(1)
+    if wagon.is_a?(PassengerWagon)
+      wagon.take_volume
     else
       puts SET_OCCUPIED_VOLUME
       volume = gets.to_f
       wagon.take_volume(volume)
     end
+  rescue StandardError => e
+    puts e.message
+    retry
   end
 
 private

@@ -3,17 +3,21 @@ require_relative 'manufacturer.rb'
 class Wagon
   include Manufacturer
 
-  attr_reader :free_volume, :occupied_volume
+  NOT_ENOUGH_SPACE = "не хватает места"
+
+  attr_reader :occupied_volume
 
   def initialize(volume)
-    @free_volume = volume
+    @total_volume = volume
     @occupied_volume = 0
   end
 
+  def free_volume
+    @total_volume - @occupied_volume
+  end
+
   def take_volume(take_volume)
-    if take_volume <= free_volume
-      @free_volume -= take_volume
-      @occupied_volume += take_volume
-    end
+    raise NOT_ENOUGH_SPACE if take_volume > free_volume 
+    @occupied_volume += take_volume
   end
 end
